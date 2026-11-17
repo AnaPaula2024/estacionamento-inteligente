@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Estacionamento Inteligente</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; background-color: #f4f4f9; margin: 0; padding: 20px; }
+    h1 { color: #333; }
+    .container { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin-top: 30px; }
+    .vaga { width: 120px; padding: 20px; border-radius: 12px; box-shadow: 0 4px 8px rgba(0,0,0,0.2); transition: 0.3s; }
+    .livre { background-color: #4CAF50; color: white; border: 3px solid #388E3C; }
+    .ocupada { background-color: #F44336; color: white; border: 3px solid #D32F2F; }
+    .vaga h2 { margin: 0 0 10px 0; font-size: 1.5em; }
+    .vaga p { margin: 0; font-weight: bold; font-size: 1.2em; }
+  </style>
+</head>
+<body>
+  <h1>Painel de Vagas</h1>
+  <div class="container" id="painel-vagas" aria-live="polite">
+    <!-- As vagas serão injetadas aqui pelo JavaScript -->
+  </div>
+
+  <script>
+    function atualizarVagas() {
+      fetch('/status')
+        .then(response => response.json())
+        .then(data => {
+          let html = '';
+          data.forEach((vaga, index) => {
+            let classe = vaga.ocupada ? 'ocupada' : 'livre';
+            let texto = vaga.ocupada ? 'Ocupada' : 'Livre';
+            html += `<div class="vaga ${classe}">
+                       <h2>Vaga ${index + 1}</h2>
+                       <p>${texto}</p>
+                     </div>`;
+          });
+          document.getElementById('painel-vagas').innerHTML = html;
+        })
+        .catch(error => console.error("Erro na leitura:", error));
+    }
+
+    setInterval(atualizarVagas, 1000);
+    atualizarVagas();
+  </script>
+</body>
+</html>
