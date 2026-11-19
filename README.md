@@ -27,8 +27,14 @@ Apresentar visualmente vagas livres e ocupadas e, na etapa de integração, cone
 
 ## Estado do projeto
 
-O protótipo visual e estas demonstrações já podem ser consultados. O código Arduino, o serviço que fornecerá o estado das vagas em `/status` e a integração completa entre hardware e painel serão adicionados depois que o grupo compartilhar e validar os arquivos. O GIF do painel é uma demonstração visual e não representa, por si só, uma integração em tempo real.
+O firmware para ESP32 está disponível em [`estacionamento_inteligente.ino`](estacionamento_inteligente.ino). Ele lê os sensores, controla os LEDs e disponibiliza um painel web e a rota `/status` pela rede Wi-Fi criada pelo próprio ESP32. A validação da montagem e da integração física deve ser feita com o hardware do projeto. O GIF do painel é uma demonstração visual e não representa, por si só, uma integração em tempo real.
 
 ## Desenvolvimento
 
 Projeto acadêmico colaborativo. A documentação será atualizada conforme o grupo entregar e revisar as próximas partes.
+
+## Vídeo completo do projeto
+
+[![Assistir ao vídeo completo do Estacionamento Inteligente](https://img.youtube.com/vi/ddZB8dYenuE/hqdefault.jpg)](https://youtu.be/ddZB8dYenuE)
+
+[Assistir ao vídeo completo no YouTube](https://youtu.be/ddZB8dYenuE)
